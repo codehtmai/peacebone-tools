@@ -70,6 +70,9 @@ for idx, line in enumerate(maps_lines):
     map_val = Decimal(line[8])
     wholesale_val = Decimal(line[9])
 
+    #if sku[:1] == '873199000812' or sku == '873199001147':
+    #    print("found")
+
     maps[sku] = {"retail": retail_val, "map": map_val, "wholesale": wholesale_val}
 
 # Old MAPs
@@ -92,10 +95,16 @@ for idx, line in enumerate(old_maps_lines):
 
 prices_lowered = 0
 prices_raised = 0
+prices_fixed = 0
 for idx, line in enumerate(product_lines):
     if idx == 0:
         continue
     sku = line[13]  # SKU Column
+
+    if sku == '39954' or sku == '873199001147':
+        print("found")
+        pass
+
     if sku == '':
         continue
 
