@@ -6,7 +6,7 @@ input_filename = 'intermediate1.csv'
 output_filename = 'intermediate2.csv'
 
 # original tags
-r = csv.reader(open(input_filename, 'r', encoding='utf-8')) # Here your csv file
+r = csv.reader(open(input_filename, 'r', encoding='utf-8'))  # Here your csv file
 lines = list(r)
 
 idx = 0
@@ -28,6 +28,10 @@ for line in lines:
         new_tag = "Foods_Wet Food"
         tags += ',' + new_tag
         print("Found wet food on line " + str(idx))
+    if 'organic_brand' in compare_list:
+        new_tag = "Organic_Special Diet"
+        tags += ',' + new_tag
+        print("Organic_brand on line " + str(idx))
     line[5] = tags
     idx += 1
 
