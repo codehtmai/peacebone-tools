@@ -120,6 +120,7 @@ for idx, line in enumerate(product_lines):
 
     if (price + diff) < map_val:
         print("SKU {} fell below MAP and was corrected".format(sku))
+        prices_fixed += 1
         line[19] = map_val
 
     # assert not retail < Decimal(maps[sku]['map'])
@@ -137,6 +138,7 @@ for idx, line in enumerate(product_lines):
 
 print("Prices lowered: {}".format(prices_lowered))
 print("Prices raised: {}".format(prices_raised))
+print("Prices corrected to MAP: {}".format(prices_fixed))
 
 writer = csv.writer(open(output_filename, 'w', encoding='utf-8', newline=''))
 writer.writerows(product_lines)
