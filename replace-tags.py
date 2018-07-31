@@ -5,9 +5,12 @@ import datetime
 
 today = datetime.datetime.now().strftime("%m-%d-%y")
 
+basedir = r"C:\Users\codeh\Google Drive\peacebone-tools"
+os.chdir(basedir)
+
 tag_maps_filename = 'TagMaps.csv'
 initial_export_filename = 'products_export.csv'
-product_export_filename = 'products_export_{}.csv'.format(today)
+product_export_filename = r'Products\products_export_{}.csv'.format(today)
 output_filename = 'intermediate1.csv'
 
 if os.path.exists(initial_export_filename):

@@ -1,6 +1,8 @@
-import pandas as pd
 import csv
-import math
+import os
+
+basedir = r"C:\Users\codeh\Google Drive\peacebone-tools"
+os.chdir(basedir)
 
 input_filename = 'intermediate1.csv'
 output_filename = 'intermediate2.csv'

@@ -16,7 +16,7 @@ def get_date(filename, date_pattern):
 
 
 def get_latest_filename():
-    dir_path = r"C:\Users\codeh\Documents\peacebone-tags"
+    dir_path = basedir + os.path.sep + "EA"  # EA MAP prices directory
     filenames = [f for f in listdir(dir_path) if isfile(join(dir_path, f))]
 
     date_pattern = re.compile(r'prices_(\d{2})-(\d{2})-(\d{2})\b')
@@ -30,15 +30,18 @@ def get_latest_filename():
     date_filenames = [fn for fn in filenames if last_date in fn]
     latest_prices = date_filenames[0]
 
-    return latest_prices
+    return "EA" + os.path.sep + latest_prices
 
+
+basedir = r"C:\Users\codeh\Google Drive\peacebone-tools"
+os.chdir(basedir)
 
 today = datetime.datetime.now().strftime("%m-%d-%y")
 
 input_product_filename = 'intermediate2.csv'
 initial_maps_filename = 'prices.csv'
-renamed_maps_filename = 'prices_{}.csv'.format(today)
-output_filename = 'products_final_{}.csv'.format(today)
+renamed_maps_filename = r'EA\prices_{}.csv'.format(today)
+output_filename = 'Output\products_final_{}.csv'.format(today)
 old_maps_filename = get_latest_filename()
 
 # Rename Prices to today
