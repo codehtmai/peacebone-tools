@@ -54,6 +54,9 @@ product_lines = list(product_reader)
 
 assert product_lines[0][13] == 'Variant SKU'  # In case they ever change the CSV format
 assert product_lines[0][19] == 'Variant Price'
+assert product_lines[0][26] == 'Image Alt Text'
+assert product_lines[0][1] == 'Title'
+assert product_lines[0][3] == 'Vendor'
 
 maps_reader = csv.reader(open(renamed_maps_filename, 'r', encoding='utf-8'))
 maps_lines = list(maps_reader)
@@ -103,8 +106,10 @@ for idx, line in enumerate(product_lines):
     if idx == 0:
         continue
     sku = line[13]  # SKU Column
+    title = line[1]
+    vendor = line[3]
 
-    if sku == '39954' or sku == '873199001147':
+    if sku == '39954' or sku == '873199001147':  # Debug code
         print("found")
         pass
 
@@ -134,6 +139,9 @@ for idx, line in enumerate(product_lines):
         print("SKU {} fell below MAP and was corrected".format(sku))
         prices_fixed += 1
         line[19] = map_val
+
+    if title and vendor:  # Update Image Alt Text
+        line[26] = "{} - {} | Peacebone".format(title, vendor)
 
     # assert not retail < Decimal(maps[sku]['map'])
 
