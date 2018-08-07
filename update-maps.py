@@ -55,6 +55,8 @@ product_lines = list(product_reader)
 assert product_lines[0][13] == 'Variant SKU'  # In case they ever change the CSV format
 assert product_lines[0][19] == 'Variant Price'
 assert product_lines[0][26] == 'Image Alt Text'
+assert product_lines[0][28] == 'SEO Title'
+assert product_lines[0][29] == 'SEO Description'
 assert product_lines[0][1] == 'Title'
 assert product_lines[0][3] == 'Vendor'
 
@@ -142,6 +144,7 @@ for idx, line in enumerate(product_lines):
 
     if title and vendor:  # Update Image Alt Text
         line[26] = "{} - {} | Peacebone".format(title, vendor)
+        line[28] = "{} | Peacebone".format(title)  # Map product title to SEO Title
 
     # assert not retail < Decimal(maps[sku]['map'])
 
