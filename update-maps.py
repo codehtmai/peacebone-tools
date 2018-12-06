@@ -71,8 +71,11 @@ maps = dict()
 for idx, line in enumerate(maps_lines):
     if idx == 0:
         continue
-    sku_val = line[0]
-    sku = sku_val[1:]
+    sku = line[0]
+    # sku = sku_val[1:]
+
+    if sku == '38180':
+        print("Found")
 
     retail_val = Decimal(line[7])
     map_val = Decimal(line[8])
@@ -91,8 +94,8 @@ old_maps = dict()
 for idx, line in enumerate(old_maps_lines):
     if idx == 0:
         continue
-    sku_val = line[0]
-    sku = sku_val[1:]
+    sku = line[0]
+    #sku = sku_val[1:] # This used to be needed when we pulled from the other column leading with a '
 
     retail_val = Decimal(line[7])
     old_map_val = Decimal(line[8])
